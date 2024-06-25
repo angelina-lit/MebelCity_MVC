@@ -4,7 +4,6 @@ namespace MebelCityWeb.Models
 {
 	public class PriceList
 	{
-        [Key]
         public int Id { get; set; }
 
         [Required]
