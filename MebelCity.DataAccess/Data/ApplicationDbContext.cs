@@ -1,9 +1,9 @@
-﻿using MebelCityWeb.Models;
+﻿using MebelCity.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MebelCityWeb.Data
+namespace MebelCity.DataAccess.Data
 {
-	public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
 	{
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

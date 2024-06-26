@@ -1,4 +1,4 @@
-using MebelCityWeb.Data;
+using MebelCity.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

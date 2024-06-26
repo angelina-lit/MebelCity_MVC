@@ -5,6 +5,12 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelCityWeb", "MebelCityWeb\MebelCityWeb.csproj", "{593479EE-0B1D-4A43-99BB-E18FB814DAEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelCity.DataAccess", "MebelCity.DataAccess\MebelCity.DataAccess.csproj", "{7C4194E9-B8E9-4F72-BDA7-6229418CE0EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelCity.Models", "MebelCity.Models\MebelCity.Models.csproj", "{D46674AF-2BA1-4F2F-B5C1-C2E33A0143B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelCity.Utility", "MebelCity.Utility\MebelCity.Utility.csproj", "{F02B6042-261F-4B4B-A254-9B76C18EA4D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{593479EE-0B1D-4A43-99BB-E18FB814DAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{593479EE-0B1D-4A43-99BB-E18FB814DAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{593479EE-0B1D-4A43-99BB-E18FB814DAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4194E9-B8E9-4F72-BDA7-6229418CE0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4194E9-B8E9-4F72-BDA7-6229418CE0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4194E9-B8E9-4F72-BDA7-6229418CE0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4194E9-B8E9-4F72-BDA7-6229418CE0EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46674AF-2BA1-4F2F-B5C1-C2E33A0143B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46674AF-2BA1-4F2F-B5C1-C2E33A0143B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46674AF-2BA1-4F2F-B5C1-C2E33A0143B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46674AF-2BA1-4F2F-B5C1-C2E33A0143B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02B6042-261F-4B4B-A254-9B76C18EA4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02B6042-261F-4B4B-A254-9B76C18EA4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02B6042-261F-4B4B-A254-9B76C18EA4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02B6042-261F-4B4B-A254-9B76C18EA4D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

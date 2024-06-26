@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MebelCityWeb.Migrations
+namespace MebelCity.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddPriceListTableToDb : Migration

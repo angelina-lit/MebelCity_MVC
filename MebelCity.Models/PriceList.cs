@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MebelCityWeb.Models
+namespace MebelCity.Models
 {
-	public class PriceList
-	{
+    public class PriceList
+    {
         public int Id { get; set; }
 
         [Required]
