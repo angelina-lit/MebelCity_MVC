@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace MebelCity.Models
 {
@@ -6,8 +7,9 @@ namespace MebelCity.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Это поле является обязательным к заполнению.")]
+		[MaxLength(40)]
+		[DisplayName("Название прайс-листа")]
         public string Name { get; set; }
-        public int DisplayOrder { get; set; }
     }
 }

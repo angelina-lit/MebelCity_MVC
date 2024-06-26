@@ -2,6 +2,8 @@
 using MebelCity.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
@@ -19,16 +21,13 @@ namespace MebelCity.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MebelCityWeb.Models.PriceList", b =>
+            modelBuilder.Entity("MebelCity.Models.PriceList", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -37,14 +36,6 @@ namespace MebelCity.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PriceLists");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DisplayOrder = 1,
-                            Name = "Прайс-лист от 25.06.2024"
-                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -1,11 +1,99 @@
-﻿<h1>Прайс-листы</h1>
-<table class="table table-border table-striped">
-	<tr>
-		<th>
-			№
-		</th>
-		<th>
-			Название
-		</th>
-	</tr>
-</table>
+﻿@model List<PriceList>
+
+@*<div class="container">
+	<div class="row pt-2">
+		<div class="col-6">
+			<h2 class="text-dark">
+				Прайсы
+			</h2>
+		</div>
+	</div>
+	<div class="row pt-2">
+		<div class="col-6 pb-2">
+			<a asp-controller="PriceList" asp-action="Create" class="btn btn-primary">
+				<i class="bi bi-plus-circle"></i> Прайс-лист
+			</a>
+		</div>
+	</div>
+	 <table class="table table-border table-striped">
+		<thead>
+			<tr>
+				<th>
+					№
+				</th>
+				<th>
+					Название
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@* @foreach (var obj in Model.OrderBy(u => u.Id))
+			{
+				<tr>
+					<td>
+						@obj.Id
+					</td>
+					<td>
+						<a asp-controller="PriceList" asp-action="Edit" class="text-decoration-none">@obj.Name</a>
+					</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+							<a asp-controller="PriceList" asp-action="Delete" class="btn btn-danger" style="width:50px">
+								<i class="bi bi-trash"></i> Удалить
+							</a>
+						</div>
+					</td>
+				</tr>
+			} 
+		</tbody>
+	</table>
+	</div>*@
+
+<div class="card shadow border-0 mt-4 mb-6">
+	<div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">Прайсы</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row pb-3">
+			<div class="col-6">
+				<a asp-controller="PriceList" asp-action="Create" class="btn btn-secondary">
+					<i class="bi bi-plus-circle"></i> Прайс-лист
+				</a>
+			</div>
+		</div>
+
+		<table class="table table-bordered table-striped" style="width: 100%;">
+			<thead>
+				<tr>
+					<th style="width: 5%;">
+						№
+					</th>
+					<th style="width: 80%;">
+						Название
+					</th>
+					<th style="width: 10%;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var obj in Model.OrderBy(u => u.Id))
+				{
+					<tr>
+						<td>@obj.Id</td>
+						<td><a asp-controller="PriceList" asp-action="Edit" class="text-decoration-none">@obj.Name</a></td>
+						<td>
+							<div class="text-end">
+								<a asp-controller="PriceList" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger">
+									<i class="bi bi-trash"></i> Удалить
+								</a>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
