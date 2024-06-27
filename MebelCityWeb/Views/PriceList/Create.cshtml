@@ -1,4 +1,4 @@
-﻿@model PriceList
+﻿@model PriceListDetailVM
 
 
 <form method="post">
@@ -11,9 +11,9 @@
 				<a asp-controller="PriceList" asp-action="Index" class="btn btn-secondary" style="width:120px">Отмена</a>
 			</div>
 			<div class="mb-3">
-				<label asp-for="Name"></label>
-				<input asp-for="Name" class="form-control" />
-				<span asp-validation-for="Name" class="text-danger"></span>
+				<label asp-for="PriceList.Name"></label>
+				<input asp-for="PriceList.Name" class="form-control" />
+				<span asp-validation-for="PriceList.Name" class="text-danger"></span>
 			</div>
 		</div>
 	</div>
@@ -21,24 +21,9 @@
 		<div class="row pb-2">
 			<h2 class="text-primary">Добавление колонок в прайс-лист</h2>
 			<hr />
-			<table class="table table-bordered table-striped" style="width: 100%;">
-				<thead>
-					<tr>
-						<th style="width: 30%;">
-							Количество колонок
-						</th>
-						<th style="width: 30%;">
-							Наименование колонок
-						</th>
-						<th style="width: 30%;">
-							Тип данных
-						</th>
-						<th style="width: 10%;">
-						</th>
-					</tr>
-				</thead>
+			<table class="table table-bordered table-striped" style="width: 100%;" id="columnTable">
 				<tbody>
-					@* @foreach (var obj in Model.ByOrder(u => u.Name))
+					@foreach (var obj in Model.Column?.OrderBy(u => u.Name))
 					{
 						<tr>
 							<td>@obj.Name</td>
@@ -51,17 +36,47 @@
 								</div>
 							</td>
 						</tr>
-					} *@
+					}
 				</tbody>
 			</table>
 			<div class="mb-3">
-				<a asp-controller="PriceList" asp-action="Index" class="btn btn-secondary" style="width:170px">Добавить колонку</a>
+				<a class="btn btn-secondary" style="width:170px" onclick="AddColumn()">Добавить колонку</a>
 			</div>
 		</div>
 	</div>
 </form>
 
-@section Scripts{
+<script>
+	function AddColumn() {
+		$('#columnTable tbody').append(`
+				<tr>
+					<td>
+						<input type="text" class="form-control" name="columnNames[]" placeholder="Введите название колонки" />
+					</td>
+					<td>
+						<select class="form-control" name="columnTypes[]">
+							<option value="string">String</option>
+							<option value="int">Integer</option>
+							<!-- Добавьте другие типы данных по необходимости -->
+						</select>
+					</td>
+					<td>
+						<div class="text-end">
+							<button type="button" class="btn btn-danger" onclick="RemoveColumn(this)">
+								<i class="bi bi-trash"></i> Удалить
+							</button>
+						</div>
+					</td>
+				</tr>
+			`);
+	}
+
+	function RemoveColumn(element) {
+		$(element).closest('tr').remove();
+	}
+</script>
+
+@section Scripts {
 	@{
 		<partial name="_ValidationScriptsPartial" />
 	}

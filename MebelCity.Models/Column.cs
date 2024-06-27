@@ -13,8 +13,8 @@ namespace MebelCity.Models
 		[DisplayName("Наименование колонки")]
 		public string Name { get; set; }
 
-		/*[Required(ErrorMessage = "Это поле является обязательным к заполнению.")]
+		[Required(ErrorMessage = "Это поле является обязательным к заполнению.")]
 		[DisplayName("Тип содержимого колонки")]
-		public IEnumerable<SelectListItem> TypeOfContent { get; set; }*/
+		public string TypeOfContent { get; set; }
 	}
 }
