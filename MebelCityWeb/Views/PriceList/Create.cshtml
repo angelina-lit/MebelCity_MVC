@@ -37,8 +37,8 @@
 						</th>
 					</tr>
 				</thead>
-				@* <tbody>
-					@foreach (var obj in Model.OrderBy(u => u.Name))
+				<tbody>
+					@* @foreach (var obj in Model.ByOrder(u => u.Name))
 					{
 						<tr>
 							<td>@obj.Name</td>
@@ -51,9 +51,12 @@
 								</div>
 							</td>
 						</tr>
-					}
-				</tbody> *@
+					} *@
+				</tbody>
 			</table>
+			<div class="mb-3">
+				<a asp-controller="PriceList" asp-action="Index" class="btn btn-secondary" style="width:170px">Добавить колонку</a>
+			</div>
 		</div>
 	</div>
 </form>
