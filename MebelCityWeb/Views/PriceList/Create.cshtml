@@ -2,81 +2,123 @@
 
 
 <form method="post">
-	<div class="border p-3 mt-4">
-		<div class="row pb-1">
-			<h2 class="text-primary">Добавление прайс-листа</h2>
-			<hr />
-			<div class="mb-3">
-				<button type="submit" class="btn btn-primary" style="width:150px">Продолжить</button>
-				<a asp-controller="PriceList" asp-action="Index" class="btn btn-secondary" style="width:120px">Отмена</a>
-			</div>
-			<div class="mb-3">
-				<label asp-for="PriceList.Name"></label>
-				<input asp-for="PriceList.Name" class="form-control" />
-				<span asp-validation-for="PriceList.Name" class="text-danger"></span>
-			</div>
-		</div>
-	</div>
-	<div class="border p-3 mt-4">
-		<div class="row pb-2">
-			<h2 class="text-primary">Добавление колонок в прайс-лист</h2>
-			<hr />
-			<table class="table table-bordered table-striped" style="width: 100%;" id="columnTable">
-				<tbody>
-					@foreach (var obj in Model.Column?.OrderBy(u => u.Name))
-					{
-						<tr>
-							<td>@obj.Name</td>
-							<td>@obj.TypeOfContent</td>
-							<td>
-								<div class="text-end">
-									<a asp-controller="" asp-action="Delete" asp-route-id="@obj.Name" class="btn btn-danger">
-										<i class="bi bi-trash"></i> Удалить
-									</a>
-								</div>
-							</td>
-						</tr>
-					}
-				</tbody>
-			</table>
-			<div class="mb-3">
-				<a class="btn btn-secondary" style="width:170px" onclick="AddColumn()">Добавить колонку</a>
-			</div>
-		</div>
-	</div>
+    <div class="border p-3 mt-4">
+        <div class="row pb-1">
+            <h2 class="text-primary">Добавление прайс-листа</h2>
+            <hr />
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" style="width:150px" onclick="ContinueCreatePriceList()">Продолжить</button>
+                <a asp-controller="PriceList" asp-action="Index" class="btn btn-secondary" style="width:120px">Отмена</a>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PriceList.Name"></label>
+                <input asp-for="PriceList.Name" class="form-control" />
+                <span asp-validation-for="PriceList.Name" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Добавление колонок в прайс-лист</h2>
+            <hr />
+            <table class="table table-bordered table-striped" style="width: 100%;" id="columnTable">
+                <tbody>
+                    @foreach (var obj in Model.Column.OrderBy(u => u.Name))
+                    {
+                        <tr>
+                            <td><input value="@obj.Name" type="text" class="form-control" name="columnNames[]" placeholder="Введите название колонки" /></td>
+                            <td>
+                                <select class="form-control" name="columnTypes[]">
+                                    <option value="string">Текст</option>
+                                    <option value="int">Число</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div class="text-end">
+                                    <a class="btn btn-danger">
+                                        <i class="bi bi-trash"></i> Удалить
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="mb-3">
+                <a class="btn btn-secondary" style="width:170px" onclick="AddColumn()">Добавить колонку</a>
+            </div>
+        </div>
+    </div>
 </form>
 
 <script>
-	function AddColumn() {
-		$('#columnTable tbody').append(`
-				<tr>
-					<td>
-						<input type="text" class="form-control" name="columnNames[]" placeholder="Введите название колонки" />
-					</td>
-					<td>
-						<select class="form-control" name="columnTypes[]">
-							<option value="string">Текст</option>
-							<option value="int">Число</option>
-						</select>
-					</td>
-					<td>
-						<div class="text-end">
-							<button type="button" class="btn btn-danger" onclick="RemoveColumn(this)">
-								<i class="bi bi-trash"></i> Удалить
-							</button>
-						</div>
-					</td>
-				</tr>
-			`);
-	}
+    var localIdentityColumn = 1;
 
-	function RemoveColumn(element) {
-		$(element).closest('tr').remove();
-	}
+    function AddColumn() {
+        $('#columnTable tbody').append(`
+                <tr class='new_column' id='new_column_${localIdentityColumn++}'>
+              <td>
+                <input type="text" class="form-control new_column_input" name="columnNames[]" placeholder="Введите название колонки" />
+              </td>
+              <td>
+                <select class="form-control new_column_select" name="columnTypes[]">
+                  <option value="string">Текст</option>
+                  <option value="int">Число</option>
+                </select>
+              </td>
+              <td>
+                <div class="text-end">
+                  <button type="button" class="btn btn-danger" onclick="RemoveColumn(this)">
+                    <i class="bi bi-trash"></i> Удалить
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `);
+    }
+
+    function RemoveColumn(element) {
+        $(element).closest('tr').remove();
+    }
+
+    function ContinueCreatePriceList() {
+        //тут собираем все добавленные колонки
+        let columns = [];
+
+        $('.new_column').each((x, y) => {
+            let name = $(y).find('.new_column_input').val();
+            let columnType = $(y).find('.new_column_select').val();
+
+            columns.push({
+                Name: name,
+                TypeOfContent: columnType
+            });
+        });
+
+        //здесь собираем модель для запроса(скорее всего надо будет изменить)
+        let priceListColumns = {
+            NamePriceList : "", //тут надо получить название прайса из поля
+            Columns : columns
+        }
+
+        //тут мы отправляем и название прайслиста и новые колонки
+        $.ajax({
+            url: '@Url.Action("PriceListContinue", "PriceListController")',
+            type: 'post',
+            data: {
+                PriceList: priceListColumns //тут тоже надо будет поменять в зависимости от параметра конечной точки(Action)
+            },
+            dataType: 'json',
+            success: function (json) {
+                //тут обрабатываем результат от сервера
+                //если все хорошо, то делаем переход на след.страницу
+            }
+        });
+    }
 </script>
 
 @section Scripts {
-	@{
-		<partial name="_ValidationScriptsPartial" />
-	}
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }

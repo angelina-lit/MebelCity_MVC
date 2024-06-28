@@ -16,5 +16,7 @@ namespace MebelCity.Models
 		[Required(ErrorMessage = "Это поле является обязательным к заполнению.")]
 		[DisplayName("Тип содержимого колонки")]
 		public string TypeOfContent { get; set; }
-	}
+		public PriceList PriceList { get; set; }
+        public int PriceListId { get; set; }
+    }
 }

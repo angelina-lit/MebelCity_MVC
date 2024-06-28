@@ -11,5 +11,7 @@ namespace MebelCity.Models
 		[MaxLength(40)]
 		[DisplayName("Название прайс-листа")]
         public string Name { get; set; }
+
+        public ICollection<Column> Columns { get; set; }
     }
 }
