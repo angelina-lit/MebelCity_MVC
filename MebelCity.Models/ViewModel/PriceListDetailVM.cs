@@ -8,6 +8,6 @@ namespace MebelCity.Models.ViewModel
 		[Required]
 		public PriceList PriceList { get; set; }
 
-		public List<Column> Column { get; set; }
+		public List<Column>? Column { get; set; }
 	}
 }
