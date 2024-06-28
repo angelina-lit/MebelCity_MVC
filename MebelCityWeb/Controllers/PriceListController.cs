@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MebelCity.DataAccess.Data;
 using MebelCity.Models.ViewModel;
+using MebelCity.Models.Enums;
 
 namespace MebelCityWeb.Controllers
 {
@@ -25,8 +26,8 @@ namespace MebelCityWeb.Controllers
 			PriceListDetailVM model = new PriceListDetailVM();
 			model.Column = new List<Column>()
 			{
-				new Column() { Id = 1, Name = "Наименование товара", TypeOfContent = "Текст"},
-				new Column() { Id = 2, Name = "Код товара", TypeOfContent = "Число"}
+				new Column() { Id = 1, Name = "Наименование товара", TypeOfContent = ColumnType.Line},
+				new Column() { Id = 2, Name = "Код товара", TypeOfContent = ColumnType.Number}
 			};
 			
 			return View(model);

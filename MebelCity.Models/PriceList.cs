@@ -12,6 +12,6 @@ namespace MebelCity.Models
 		[DisplayName("Название прайс-листа")]
         public string Name { get; set; }
 
-        public ICollection<Column> Columns { get; set; }
+        public List<Column> Columns { get; set; }
     }
 }

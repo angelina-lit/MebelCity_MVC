@@ -1,22 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Web.Mvc;
+using MebelCity.Models.Enums;
 
 namespace MebelCity.Models
 {
 	public class Column
 	{
 		public int Id { get; set; }
-
-		[Required(ErrorMessage = "Это поле является обязательным к заполнению.")]
-		[MaxLength(40)]
-		[DisplayName("Наименование колонки")]
 		public string Name { get; set; }
+		//public string TypeOfContent { get; set; }
+		public ColumnType TypeOfContent { get; set; }
 
-		[Required(ErrorMessage = "Это поле является обязательным к заполнению.")]
-		[DisplayName("Тип содержимого колонки")]
-		public string TypeOfContent { get; set; }
-		public PriceList PriceList { get; set; }
-        public int PriceListId { get; set; }
+        public List<PriceList> PriceLists { get; set; }
+
+        /*public PriceList PriceList { get; set; }
+        public int PriceListId { get; set; }*/
     }
 }
