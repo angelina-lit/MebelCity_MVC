@@ -23,17 +23,17 @@
 			<hr />
 			<table class="table table-bordered table-striped" style="width: 100%;" id="columnTable">
 				<tbody>
-					@foreach (var f in Model.Column.OrderBy(u => u.Name))
+					@foreach (var obj in Model.Column.OrderBy(u => u.Name))
 					{
 						<tr>
-							<td><input value="@f.Name" type="text" class="form-control" name="columnNames[]" placeholder="Введите название колонки" /></td>
+							<td><input value="@obj.Name" type="text" class="form-control" name="columnNames[]" placeholder="Введите название колонки" /></td>
 							<td>
 								<select readonly name="columnNames[].Type" class="form-select columns-type-selector" aria-label="Default select example">
-									@if (f.TypeOfContent == ColumnType.Number)
+									@if (obj.TypeOfContent == ColumnType.Number)
 									{
 										<option selected="true" value="number">Число</option>
 									}
-									@if (f.TypeOfContent == ColumnType.Line)
+									@if (obj.TypeOfContent == ColumnType.Line)
 									{
 										<option selected="true" value="line">Текст</option>
 									}
