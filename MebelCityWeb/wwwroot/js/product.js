@@ -8,11 +8,7 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": { url: '/product/getall' },
         "columns": [
-            { data: '', "width": "25%" },
-            { data: '', "width": "15%" },
-            { data: '', "width": "10%" },
-            { data: '', "width": "15%" },
-            { data: '', "width": "10%" },
+            { data: '', "width": "25%" },//тут будут колонки
             {
                 data: 'id',
                 "render": function (data) {
@@ -29,7 +25,7 @@ function loadDataTable() {
 function Delete(url) {
     Swal.fire({
         title: "Вы уверены?",
-        text: "You won't be able to revert this!",
+        text: "Вы не сможете отменить это действие!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

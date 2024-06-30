@@ -1,9 +1,10 @@
-﻿@model List<PriceList>
+﻿@model PriceListDetail
 
 
 <div class="border p-3 mt-4">
 	<div class="row pb-1">
-		<h2 class="text-primary">/название выбранного прайса/</h2>
+		<h2 class="text-primary">/Тут название выбранного(созданного) прайса/</h2>
+		<input id="price-list-id" type="number" hidden value="@ViewData["price_list_id"]" />
 		<hr />
 		<div class="mb-3">
 			<a asp-controller="Product" asp-action="Upsert" class="btn btn-secondary">
@@ -19,13 +20,11 @@
 		</div>
 		<table id="tblData" class="table table-bordered table-striped" style="width:100%">
 			<thead>
-				<tr>
-					@* @foreach (var obj in Model.Column.OrderBy(u => u.Name))
-					{
-					
-					} *@
-				</tr>
+				
 			</thead>
+			<tbody>
+				
+			</tbody>
 		</table>
 	</div>
 </div>

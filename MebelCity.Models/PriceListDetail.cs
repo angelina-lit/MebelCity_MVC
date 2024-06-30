@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MebelCity.Models
 {
-	public class PriceListDetails
+	public class PriceListDetail
 	{
 		public PriceList PriceList { get; set; }
 		public List<Product> Products { get; set; }
